@@ -36,6 +36,10 @@ set splitright
 set listchars=tab:>·,trail:·,extends:>,precedes:<  " Highlight problematic whitespace
 set autochdir " current file dirrectory when create any file
 
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+let g:vim_vue_plugin_load_full_syntax = 1
+let g:vim_vue_plugin_debug = 1
+
 if has('persistent_undo')
   set undofile          " So is persistent undo
   set undolevels=1000   " Maximum number of changes
@@ -111,6 +115,10 @@ Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
+Plug 'scrooloose/nerdcommenter'
+Plug 'posva/vim-vue'
+Plug 'digitaltoad/vim-pug'
+Plug 'mattn/emmet-vim'
 
 
 " List ends here. Plugins become visibe to Vim after this call
