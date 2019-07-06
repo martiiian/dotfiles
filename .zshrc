@@ -13,11 +13,13 @@ export TERM="xterm-256color"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -138,6 +140,7 @@ source $ZSH/oh-my-zsh.sh
 alias tmux="TERM=xterm-256color tmux"
 alias copy="xclip -selection clipboard "
 alias rm="rm -rf"
+
 [[ -e ~/luxi_shell/functions ]] && source ~/luxi_shell/functions
 
 export NVM_DIR="$HOME/.nvm"

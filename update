@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 cp ~/.config/nvim/init.vim \
   ~/.tmux.conf \
@@ -9,8 +9,8 @@ cp ~/.config/nvim/init.vim \
 cp ~/.config/i3/config ./i3config
 
 # check on existing changes
-if git diff-index --quiet HEAD --; then
-  exit
+if [[ ! `git status --porcelain` ]]; then
+  exit 0
 fi
 
 
@@ -28,6 +28,6 @@ if [[ $value =~ $re ]];
 fi
 
 git add . 
-git commit "version $version"
+git commit -m "version $version"
 git push
 
