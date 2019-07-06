@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 cp ~/.config/nvim/init.vim \
   ~/.tmux.conf \
@@ -7,3 +7,27 @@ cp ~/.config/nvim/init.vim \
   ./
 
 cp ~/.config/i3/config ./i3config
+
+# check on existing changes
+if git diff-index --quiet HEAD --; then
+  exit
+fi
+
+
+# find version and increase it
+value=$(cat README.md)
+re="v.([0-9]+)"
+version=1
+if [[ $value =~ $re ]]; 
+  then 
+    version=$((${BASH_REMATCH[1]} + 1))
+    value=$(sed "s/v.[0-9]\+/v.$version/" README.md)
+    echo "$value" > README.md
+  else
+    echo "v.$version" >> README.md
+fi
+
+git add . 
+git commit "version $version"
+git push
+
