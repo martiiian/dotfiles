@@ -119,6 +119,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'posva/vim-vue'
 Plug 'digitaltoad/vim-pug'
 Plug 'mattn/emmet-vim'
+Plug 'vim-scripts/L9'
+Plug 'vim-scripts/FuzzyFinder'
 
 
 " List ends here. Plugins become visibe to Vim after this call
