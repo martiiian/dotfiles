@@ -1,0 +1,10 @@
+[user]
+  email = jkramorevx@gmail.com
+  name = "lucicat"
+[push]
+  default = simple
+[core]
+  editor = nvim
+  autocrlf = input
+[rerere]
+  enabled = 1
