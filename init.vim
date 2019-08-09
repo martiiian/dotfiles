@@ -2,7 +2,7 @@
 packadd vimball
 " always autosave everything 
 " with ignore warnings
-:au FocusLost * silent! wa
+" :au FocusLost * silent! wa
 set autoindent
 set history=50
 set autowrite         " Automatically write a file when leaving a modifer buffer
@@ -15,7 +15,7 @@ set mousehide         " Hide the mouse cursor while typing
 set history=1000      " Store a ton of history (default is 20)
 set showmode
 set showmatch
-" set backup            
+set nobackup
 set hlsearch
 set incsearch
 set nu
@@ -32,6 +32,7 @@ set nowrap
 set list
 set ignorecase          " Case insensitive search
 set splitbelow
+set backupcopy=yes      " 
 set splitright
 set listchars=tab:>·,trail:·,extends:>,precedes:<  " Highlight problematic whitespace
 set autochdir " current file dirrectory when create any file
@@ -80,11 +81,14 @@ highlight FoldColumn ctermbg=0
 syntax enable
 
 
+" maps
 " simplify switch between windows
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+nnoremap <Leader>d :call delete(expand('%')) \| bdelete!<CR>
 
 nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
 
@@ -137,6 +141,9 @@ function! MoveFile(newspec)
      call delete(old)
 endfunction
 
-command! -nargs=1 -complete=file -bar MF call MoveFile('<args>')
+" move current file :Mf
+command! -nargs=1 -complete=file -bar Mf call MoveFile('<args>')
+" rename current file
+command! -nargs=1 Rf saveas <args> | call delete(expand('#')) | bd #
 
 
