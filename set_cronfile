@@ -3,5 +3,8 @@
 read -p "Do you want to rewrite crontab? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  cat ./cronfile | crontab -
+  sudo mkdir -p /usr/scripts \
+    && sudo cp ./on_reboot /usr/scripts/ \
+    && cat ./cronfile | crontab - \
+    && echo "successfully"
 fi
