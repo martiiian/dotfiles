@@ -2,12 +2,12 @@
 
 cp ~/.config/nvim/init.vim \
   ~/.tmux.conf \
-  ~/.i3blocks.conf \
   ~/.zshrc \
   ~/.gitconfig \
   ./
 
-cp ~/.config/i3/config ./i3config
+cp ~/.config/i3/config ./i3/
+cp ~/.i3blocks.conf ./i3/
 
 # check on existing changes
 if [[ ! `git status --porcelain` ]]; then
