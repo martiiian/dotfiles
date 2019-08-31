@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sudo cp ./autorun.service /lib/systemd/system/
+
+sudo mkdir -p /usr/scripts \
+  && sudo chown lucicat:lucicat /usr/scripts \
+  && cp ./autorun.sh /usr/scripts/
+
+sudo systemctl daemon-reload
+sudo systemctl start autorun.service
+
+echo "completed"

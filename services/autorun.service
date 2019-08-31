@@ -1,0 +1,9 @@
+[Unit]
+Description=Autorun applications
+
+[Service]
+User=lucicat
+ExecStart=/usr/scripts/autorun.sh
+
+[Install]
+WantedBy=default.target
