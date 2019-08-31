@@ -1,0 +1,2 @@
+@reboot [[ -d ~/Documents/temp ]] && rm -f ~/Documents/temp/*
+@reboot fluxgui
