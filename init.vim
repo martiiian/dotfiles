@@ -89,8 +89,8 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 nnoremap <Leader>d :call delete(expand('%')) \| bdelete!<CR>
-
-nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
+nnoremap <Leader>H :call<SID>LongLineHLToggle()<CR>
+nnoremap <C-S> :w<CR>
 
 " set vertical wrapper
 hi OverLength ctermbg=none cterm=none
@@ -125,6 +125,8 @@ Plug 'digitaltoad/vim-pug'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/L9'
 Plug 'vim-scripts/FuzzyFinder'
+Plug 'valloric/youcompleteme'
+Plug 'leafgarland/typescript-vim'
 
 
 " List ends here. Plugins become visibe to Vim after this call

@@ -261,4 +261,4 @@ client.background       $base07
 
 # set background
 exec --no-startup-id feh --bg-scale /home/lucicat/Pictures/Wallpapers/bg.jpg
-#exec --no-startup-id nitrogen --restore
+exec --no-startup-id fluxgui
