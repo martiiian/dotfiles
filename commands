@@ -1,0 +1,4 @@
+# copy files from server using scp
+scp user@host:/path/from /path/to
+
+
