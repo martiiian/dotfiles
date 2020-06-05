@@ -8,6 +8,10 @@ export EDITOR='nvim'
 export _ANTIGEN_CACHE_ENABLED='false'
 export TERM="xterm-256color"
 
+HISTSIZE=2000
+SAVEHIST=2000
+HISTFILE=~/.zsh_history
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -46,10 +50,10 @@ export TERM="xterm-256color"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
