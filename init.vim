@@ -9,11 +9,11 @@ set autowrite         " Automatically write a file when leaving a modifer buffer
 set autowriteall
 set ruler
 set nocompatible
-set showcmd
+set showcmd           " Show last line 
 set mouse=a           " Automatically enable mouse usage
 set mousehide         " Hide the mouse cursor while typing
 set history=1000      " Store a ton of history (default is 20)
-set showmode
+set showmode          " Show current mode
 set showmatch
 set nobackup
 set hlsearch
@@ -115,6 +115,8 @@ map <C-n> :NERDTreeToggle<CR>
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
@@ -127,6 +129,8 @@ Plug 'vim-scripts/L9'
 Plug 'vim-scripts/FuzzyFinder'
 Plug 'valloric/youcompleteme'
 Plug 'leafgarland/typescript-vim'
+Plug 'meain/vim-package-info', { 'do': 'npm install' }
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 
 " List ends here. Plugins become visibe to Vim after this call
@@ -148,4 +152,6 @@ command! -nargs=1 -complete=file -bar Mf call MoveFile('<args>')
 " rename current file
 command! -nargs=1 Rf saveas <args> | call delete(expand('#')) | bd #
 
+" nerd tree settings
+let NERDTreeShowHidden=1
 
