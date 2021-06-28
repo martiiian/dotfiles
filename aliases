@@ -1,7 +1,7 @@
 #!/bin/bash
 
-alias txt_to_md="deno run -A ~/luxi_shell/deno/deno-txt-md.ts"
-alias create_note="deno run -A ~/luxi_shell/deno/create-note.ts"
+alias txt_to_md="deno run -A /home/martiiian/repos/martiiian/dotfiles/deno/deno-txt-md.ts"
+alias create_note="deno run -A /home/martiiian/repos/martiiian/dotfiles/deno/create-note.ts"
 
 ###
 # Git aliases(zsh required)
