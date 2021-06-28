@@ -1,0 +1,106 @@
+#!/bin/zsh
+
+# open files with default application
+function open () {
+  xdg-open "$@">/dev/null 2>&1
+}
+
+# get havy processess 
+function heavy_ps() {
+  ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head
+}
+
+# find and delete empty folders recursively 
+function def() {
+  find $1 -depth -empty -delete
+}
+
+# show extertal ip adress
+function myip() {
+  wget -q https://www.mentebinaria.com.br/ext/ip.php -O -
+}
+
+# Open clipboard content on nvim
+function vcp() {
+  xclip -i -selection clipboard -o | nvim -
+}
+
+# show used disk space
+function used_space() {
+  df -klP -t xfs -t ext2 -t ext3 -t ext4 -t reiserfs | grep -oE ' [0-9]{1,}( +[0-9]{1,})+' | awk '{sum_used += $2} END {printf "%.0f GB\n", sum_used/1024/1024}'
+}
+
+# show allocated disk space
+function allocated_space() {
+  df -klP -t xfs -t ext2 -t ext3 -t ext4 -t reiserfs | grep -oE ' [0-9]{1,}( +[0-9]{1,})+' | awk '{sum_used += $1} END {printf "%.0f GB\n", sum_used/1024/1024}'
+}
+
+# show size for git repo
+function git_size() {
+  git bundle create tmp.bundle --all 2>&1 | out-null
+  du -sh tmp.bundle
+  rm tmp.bundle
+}
+
+
+# create gource git visualizations for your project
+function mgource() {
+  gource -1280x720 \
+    --user-scale 2 \
+    --title "$@" \
+    --colour-images \
+    --hide "mouse,progress" \
+    --font-size 20 \
+    --stop-at-end \
+    --seconds-per-day 1 \
+    -o - | ffmpeg -y -r 60 \
+      -f image2pipe \
+      -vcodec ppm -i - -vcodec libx264 \
+      -preset ultrafast \
+      -pix_fmt yuv420p \
+      -crf 1 -threads 2 \
+      -bf 0 "$@".mp4
+}
+
+
+# create a directory and enter it 
+function mkd() {
+	mkdir -p "$@" && cd "$_";
+}
+
+# update dotfiles
+function updf() {
+  DIRECTORY="$HOME/repos/dotfiles"
+  if [ -d "$DIRECTORY" ]
+  then
+    cd $DIRECTORY
+    ./update
+    cd $OLDPWD
+  fi
+}
+
+# go to repos dir
+# set REPOS_PATH in .bashrc or .zshrc
+function to_repos() {
+  cd "$REPOS_PATH"
+}
+
+function convert_to_mp4() {
+  ffmpeg -i $1 -codec copy $2
+}
+
+# show git parent
+function git_parent() {
+  git show-branch | grep '*' | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -n1 | sed 's/.*\[\(.*\)\].*/\1/' | sed 's/[\^~].*//'
+}
+
+# show fresh brannches
+function git_show_latest() {
+  git branch --sort=committerdate
+}
+
+
+# convert gif to mp4
+function convert_gif_to_mp4() {
+  ffmpeg -i $1 -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" $2
+}

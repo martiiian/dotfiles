@@ -1,0 +1,11 @@
+#!/bin/bash
+
+alias txt_to_md="deno run -A ~/luxi_shell/deno/deno-txt-md.ts"
+alias create_note="deno run -A ~/luxi_shell/deno/create-note.ts"
+
+###
+# Git aliases(zsh required)
+###
+
+# Show branch list through cat
+alias gbc="gb | cat"
