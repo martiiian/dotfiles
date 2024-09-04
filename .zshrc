@@ -2,14 +2,14 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/lucicat/.oh-my-zsh"
+export ZSH="/home/martiiian/.oh-my-zsh"
 
 export EDITOR='nvim'
 export _ANTIGEN_CACHE_ENABLED='false'
 export TERM="xterm-256color"
 
-HISTSIZE=2000
-SAVEHIST=2000
+HISTSIZE=3000
+SAVEHIST=3000
 HISTFILE=~/.zsh_history
 
 # Set name of the theme to load --- if set to "random", it will
@@ -22,7 +22,6 @@ HISTFILE=~/.zsh_history
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -78,7 +77,7 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source /home/lucicat/antigen.zsh
+source /home/martiiian/dotfiles/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -109,7 +108,6 @@ antigen theme bira
 # Tell Antigen that you're done.
 antigen apply
 
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -138,16 +136,46 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias tmux="TERM=xterm-256color tmux"
 alias copy="xclip -selection clipboard "
+alias nvim="$HOME/nvim.appimage"
 alias mex="sudo chmod +x "
 alias rm="rm -rf"
+alias smm-vpn="sudo openvpn --config ~/Programs/OpenVpn/smm.ovpn --auth-user-pass ~/Programs/OpenVpn/smm.txt"
+alias python=/usr/bin/python3
 
-[[ -e ~/luxi_shell/functions ]] && source ~/luxi_shell/functions
+[[ -e ~/dotfiles/functions ]] && source ~/dotfiles/functions
+[[ -e ~/dotfiles/aliases ]] && source ~/dotfiles/aliases
+# [[ -e ~/repos/martiiian/my/shell ]] && source ~/repos/martiiian/my/shell
+# [[ -e ~/repos/martiiian/my/aliases ]] && source ~/repos/martiiian/my/aliases
 
+# nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# deno
+export DENO_INSTALL="/home/martiiian/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# ansible
+export PATH="/home/martiiian/.local/bin:$PATH"
+
+# bun completions
+[ -s "/home/martiiian/.bun/_bun" ] && source "/home/martiiian/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# exercism
+export PATH="/home/martiiian/bin:$PATH"
+
+export fpath=(~/.zsh/functions $fpath)
+autoload -U compinit && compinit

@@ -8,3 +8,6 @@
   autocrlf = input
 [rerere]
   enabled = 1
+[pull]
+	rexane = yarne
+	rebase = false
