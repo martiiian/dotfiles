@@ -104,3 +104,27 @@ function git_show_latest() {
 function convert_gif_to_mp4() {
   ffmpeg -i $1 -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" $2
 }
+
+function webm_to_mp4() {
+    if [ -z "$1" ]; then
+        echo "Usage: convert_to_mp4 <input_file>"
+        return 1
+    fi
+
+    input_file="$1"
+    output_file="${input_file%.*}.mp4"
+
+    if [ ! -f "$input_file" ]; then
+        echo "Error: File '$input_file' not found"
+        return 1
+    fi
+
+    ffmpeg -i "$input_file" -filter:v "scale=trunc(iw/2)*2:trunc(ih/2)*2,fps=30" "$output_file"
+    
+    if [ $? -eq 0 ]; then
+        echo "Successfully converted to $output_file"
+    else
+        echo "Conversion failed"
+        return 1
+    fi
+}
